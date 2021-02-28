@@ -126,9 +126,15 @@ public class Jframe extends javax.swing.JFrame {
 
     private void jExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExitActionPerformed
         System.exit(0);
+
     }//GEN-LAST:event_jExitActionPerformed
 
     private void jButtonST1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonST1ActionPerformed
+        String cont = jTextFieldNUM.getText();
+        System.out.println(cont);
+
+        Hilo hilo1 = new Hilo(cont);
+        hilo1.start();
         jTextFieldNUM.setText("Escriba un numero");
     }//GEN-LAST:event_jButtonST1ActionPerformed
 
@@ -181,4 +187,34 @@ public class Jframe extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldLET;
     private javax.swing.JTextField jTextFieldNUM;
     // End of variables declaration//GEN-END:variables
+
+    public class Hilo extends Thread {
+
+        int c = 0;
+        String contenido = "";
+
+        public Hilo(String cnt) {
+            this.contenido = cnt;
+        }
+
+        @Override
+        public void run() {
+            if (this.contenido.matches("[0-9]+")) {
+                int c1 = Integer.parseInt(this.contenido);
+                while (c1 < 100) {
+                    c1 += 1;
+                    jLabelNUM.setText(String.valueOf(c1));
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException ex) {
+                        System.out.println("Error");
+                    }
+                }
+            }
+
+            //int c1 = this.numeroUS;
+//            int c2 = Integer.parseInt(jTextFieldNUM.getText());
+        }
+    }
+
 }
