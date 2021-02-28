@@ -131,14 +131,15 @@ public class Jframe extends javax.swing.JFrame {
 
     private void jButtonST1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonST1ActionPerformed
         String cont = jTextFieldNUM.getText();
-        System.out.println(cont);
-
         Hilo hilo1 = new Hilo(cont);
         hilo1.start();
         jTextFieldNUM.setText("Escriba un numero");
     }//GEN-LAST:event_jButtonST1ActionPerformed
 
     private void jButtonST2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonST2ActionPerformed
+        String cont = jTextFieldLET.getText();
+        Hilo hilo2 = new Hilo(cont);
+        hilo2.start();
         jTextFieldLET.setText("Escriba una letra");
     }//GEN-LAST:event_jButtonST2ActionPerformed
 
@@ -204,6 +205,17 @@ public class Jframe extends javax.swing.JFrame {
                 while (c1 < 100) {
                     c1 += 1;
                     jLabelNUM.setText(String.valueOf(c1));
+                    try {
+                        Thread.sleep(500);
+                    } catch (InterruptedException ex) {
+                        System.out.println("Error");
+                    }
+                }
+            } else {
+                char l1 = this.contenido.charAt(0);
+                while (l1 < 122) {
+                    l1 += 1;
+                    jLabelLET.setText(String.valueOf(l1));
                     try {
                         Thread.sleep(500);
                     } catch (InterruptedException ex) {
